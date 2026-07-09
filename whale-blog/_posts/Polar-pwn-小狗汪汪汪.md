@@ -7,7 +7,7 @@ categories:
 tags:
   - CTF
   - 信息安全
-cover: <img src="https://raw.githubusercontent.com/Whalefall-prog/Whalefall-blog.github.io/refs/heads/main/whale-blog/img/inder.png" >
+cover: https://raw.githubusercontent.com/Whalefall-prog/Whalefall-blog.github.io/refs/heads/main/whale-blog/img/inder.png
 toc: true
 ---
 
@@ -35,7 +35,7 @@ toc: true
 checksec woof  # woof 为题目可执行文件名
 ```
 - 由于忘了截图就顺便找了张图
-![checksec 检查截图](<img src="https://raw.githubusercontent.com/Whalefall-prog/Whalefall-blog.github.io/refs/heads/main/whale-blog/img/pwn1.png">)
+![checksec 检查截图](https://raw.githubusercontent.com/Whalefall-prog/Whalefall-blog.github.io/refs/heads/main/whale-blog/img/pwn1.png)
 - 32位,无 Canary,无 PIE,开了NX(后面看看有没有自带的后门函数)
 
 # 详细解题过程
@@ -44,16 +44,16 @@ checksec woof  # woof 为题目可执行文件名
 
 ### 1.1 主函数逻辑
 
-![main()反编译截图](<img src="../img/pwn2.png">)
+![main()反编译截图](https://raw.githubusercontent.com/Whalefall-prog/Whalefall-blog.github.io/refs/heads/main/whale-blog/img/pwn2.png)
 
 ### 1.2 进入dog()函数(init是初始化函数不用看他)
 
-![dog()反编译截图](<img src="https://raw.githubusercontent.com/Whalefall-prog/Whalefall-blog.github.io/refs/heads/main/whale-blog/img/pwn3.png">)
+![dog()反编译截图](https://raw.githubusercontent.com/Whalefall-prog/Whalefall-blog.github.io/refs/heads/main/whale-blog/img/pwn3.png)
 
 - ok啊,非常合理地使用 `gets(s)` 读取输入，未限制输入长度
 - 再让我们看看dog()的栈结构
     
-![dog()的栈结构截图](<img src="https://raw.githubusercontent.com/Whalefall-prog/Whalefall-blog.github.io/refs/heads/main/whale-blog/img/pwn4.png">)
+![dog()的栈结构截图](https://raw.githubusercontent.com/Whalefall-prog/Whalefall-blog.github.io/refs/heads/main/whale-blog/img/pwn4.png)
 
 - 溢出偏移量：0x9+4 (0x9是为了填充缓冲区,再加4 字节的栈底ebp)
 - 
@@ -61,7 +61,7 @@ checksec woof  # woof 为题目可执行文件名
 
 - 我靠真有
 - 
-![后门函数截图](<img src="https://raw.githubusercontent.com/Whalefall-prog/Whalefall-blog.github.io/refs/heads/main/whale-blog/img/pwn5.png">)
+![后门函数截图](https://raw.githubusercontent.com/Whalefall-prog/Whalefall-blog.github.io/refs/heads/main/whale-blog/img/pwn5.png)
 
 - 再看看地址 0x804859B
 
@@ -99,12 +99,12 @@ p.interactive()
 ```
 - 放个图吧
 
-![EXP脚本截图](<img src="https://raw.githubusercontent.com/Whalefall-prog/Whalefall-blog.github.io/refs/heads/main/whale-blog/img/pwn6.png">)
+![EXP脚本截图](https://raw.githubusercontent.com/Whalefall-prog/Whalefall-blog.github.io/refs/heads/main/whale-blog/img/pwn6.png)
 
 
 ## 4. 运行 EXP 并获取 Flag
 
-![getshell截图](<img src="https://raw.githubusercontent.com/Whalefall-prog/Whalefall-blog.github.io/refs/heads/main/whale-blog/img/pwn7.png">)
+![getshell截图](https://raw.githubusercontent.com/Whalefall-prog/Whalefall-blog.github.io/refs/heads/main/whale-blog/img/pwn7.png)
 
 # 总结复盘
 - 非常常规的一道pwn栈溢出题,没什么好复盘的
