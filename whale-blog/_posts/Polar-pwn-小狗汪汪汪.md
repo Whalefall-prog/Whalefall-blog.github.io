@@ -7,8 +7,6 @@ categories:
 tags:
   - CTF
   - 信息安全
-cover: https://raw.githubusercontent.com/Whalefall-prog/Whalefall-blog.github.io/refs/heads/main/whale-blog/img/inder.png
-toc: true
 ---
 
 # 前言
