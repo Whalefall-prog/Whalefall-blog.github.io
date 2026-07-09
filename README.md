@@ -1,4 +1,3 @@
-# Whalefall-blog.github.io
 ---
 title: CTF｜Polar-PWN-小狗汪汪汪
 date: 2026-05-01 03:30:00
@@ -8,8 +7,6 @@ categories:
 tags:
   - CTF
   - 信息安全
-cover: http://116.62.80.109/img/inder.png
-toc: true
 ---
 
 # 前言
